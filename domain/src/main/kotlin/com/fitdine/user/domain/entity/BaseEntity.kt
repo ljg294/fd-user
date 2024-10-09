@@ -20,7 +20,7 @@ abstract class BaseEntity : Serializable {
 
     @CreatedBy
     @Column(name = "created_user_id", nullable = false, columnDefinition = "bigint COMMENT '등록자ID'")
-    var createdUserId: Long? = null
+    var createdUserId: Long? = 0
 
     @CreatedDate
     @Column(name = "created_datetime", nullable = false, columnDefinition = "datetime COMMENT '등록일시'")
@@ -28,7 +28,7 @@ abstract class BaseEntity : Serializable {
 
     @LastModifiedBy
     @Column(name = "modified_user_id", nullable = false, columnDefinition = "bigint COMMENT '수정자ID'")
-    var modifiedUserId: Long? = null
+    var modifiedUserId: Long? = 0
 
     @LastModifiedDate
     @Column(name = "modified_datetime", nullable = false, columnDefinition = "datetime COMMENT '수정일시'")
