@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "\"user\"")
-data class UserEntity(
+class UserEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,6 @@ data class UserEntity(
     var mobile: String,
 
     @Column(name = "signup_date", nullable = false)
-    var signupDate: LocalDate
+    var signupDate: LocalDate = LocalDate.now()
 
 ) : BaseEntity()
