@@ -1,0 +1,17 @@
+### 사용자 등록
+POST http://localhost:8080/v1/users
+Content-Type: application/json
+
+{
+  "email": "ljg29494@gmail.com",
+  "password": "password12!@",
+  "name": "jay",
+  "gender": "MALE",
+  "mobile": "010-9651-2425"
+}
+
+### 사용자 상세 조회
+GET http://localhost:8080/v1/users/1
+Content-Type: application/json
+
+
