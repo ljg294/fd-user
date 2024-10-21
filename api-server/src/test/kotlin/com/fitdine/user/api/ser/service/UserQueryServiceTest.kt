@@ -1,6 +1,7 @@
 package com.fitdine.user.api.server.service
 
 import com.fitdine.user.api.server.common.exception.DuplicatedEmailException
+import com.fitdine.user.api.server.common.exception.UserNotFoundException
 import com.fitdine.user.api.server.dto.reqeust.UserCreateRequest
 import com.fitdine.user.api.server.dto.reqeust.UserDetailResponse
 import com.fitdine.user.api.server.factory.UserFactory
@@ -51,17 +52,21 @@ class UserQueryServiceTest {
     }
 
     @Test
-    fun `should return null for invalid userId`() {
+    fun `should throw UserNotFoundException for invalid userId`() {
         // Given
         val userId = 999L
 
         given(userQueryRepository.findUserDetailById(userId)).willReturn(null)
 
-        // When
-        val actualUserDetailResponse = userQueryService.findUserDetail(userId)
+        // When & Then
+        val exception = assertThrows(UserNotFoundException::class.java) {
+            userQueryService.findUserDetail(userId)
+        }
 
-        // Then
-        assertNull(actualUserDetailResponse)
+        // Assert that the exception message is as expected
+        assertEquals(UserNotFoundException.DEFAULT_MESSAGE, exception.message)
+
+        // Verify that the repository method was called
         verify(userQueryRepository).findUserDetailById(userId)
     }
 }
