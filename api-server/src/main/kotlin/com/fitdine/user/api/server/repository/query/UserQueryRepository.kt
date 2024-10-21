@@ -11,9 +11,7 @@ import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 
 @Repository
-class UserQueryRepository(
-    @PersistenceContext private val entityManager: EntityManager
-) : QuerydslRepositorySupport(UserEntity::class.java) {
+class UserQueryRepository(@PersistenceContext private val entityManager: EntityManager) : QuerydslRepositorySupport(UserEntity::class.java) {
 
     private val queryFactory: JPAQueryFactory by lazy {
         JPAQueryFactory(entityManager)
