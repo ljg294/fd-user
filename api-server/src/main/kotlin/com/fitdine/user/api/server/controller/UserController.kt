@@ -46,7 +46,7 @@ class UserController(
      * @param userId
      * @return
      */
-    @GetMapping("'/{userId}")
+    @GetMapping("/{userId}")
     fun findUserDetail(@PathVariable userId: Long): ResponseEntity<ApiResponse<UserDetailResponse?>> {
         val userDetailResponse = userQueryService.findUserDetail(userId)
         val apiResponse = ApiResponseGenerator.success(userDetailResponse)
